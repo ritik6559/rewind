@@ -1,0 +1,6 @@
+packages:
+  - "packages/*"
+  - "apps/*"
+  - "sandbox/sandboxd"
+allowBuilds:
+  esbuild: false

@@ -1,0 +1,20 @@
+{
+  "name": "@rewind/runtime-memory",
+  "version": "0.0.0",
+  "private": true,
+  "description": "In-memory runtime adapters for unit tests",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@rewind/ai": "workspace:*",
+    "@rewind/engine": "workspace:*",
+    "@rewind/protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

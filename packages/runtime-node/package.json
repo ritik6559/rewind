@@ -1,0 +1,19 @@
+{
+  "name": "@rewind/runtime-node",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local runtime adapters for running the loop on a laptop",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@rewind/engine": "workspace:*",
+    "@rewind/protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@rewind/sandboxd",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tool executors running inside the sandbox VM",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@hono/arktype-validator": "^2.0.1",
+    "@hono/node-server": "^2.1.9",
+    "@rewind/protocol": "workspace:*",
+    "arktype": "^2.2.9",
+    "hono": "^4.13.19"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@rewind/ai",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Unified multi-provider LLM layer: one message format, one stream protocol, adapters per API family",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "generate-models": "tsx scripts/generate-models.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.9.0",
+    "@google/genai": "^3.4.0",
+    "openai": "^7.57.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

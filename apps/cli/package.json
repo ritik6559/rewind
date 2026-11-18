@@ -1,0 +1,21 @@
+{
+  "name": "@rewind/cli",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Runs the agent loop locally: rewind run <repo> <task>",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@rewind/ai": "workspace:*",
+    "@rewind/engine": "workspace:*",
+    "@rewind/runtime-node": "workspace:*",
+    "@rewind/tools": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

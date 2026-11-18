@@ -1,0 +1,20 @@
+{
+  "name": "@rewind/tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Tool definitions only: ArkType input schemas, metadata, policy",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@rewind/engine": "workspace:*",
+    "@rewind/protocol": "workspace:*",
+    "arktype": "^2.2.9"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,2 @@
+// Persistent tmux shells
+export {};

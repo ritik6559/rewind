@@ -1,0 +1,19 @@
+{
+  "name": "@rewind/protocol",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared contracts: event, state and tool I/O types with ArkType schemas",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "arktype": "^2.2.9",
+    "ulid": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
