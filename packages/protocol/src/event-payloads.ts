@@ -3,7 +3,8 @@ import { SessionStatus } from "./session-state.ts";
 import { ToolCall, ToolResult } from "./tool-io.ts";
 import { Usage } from "./usage.ts";
 
-const StopReason = type("'finished' | 'hit_token_limit' | 'wants_tool_calls' | 'error' | 'aborted'");
+export const StopReason = type("'stop' | 'length' | 'toolUse' | 'error' | 'aborted'");
+export type StopReason = typeof StopReason.infer;
 
 export const eventPayloadSchemas = {
   "session.status_changed": type({ from: SessionStatus, to: SessionStatus, "reason?": "string" }),

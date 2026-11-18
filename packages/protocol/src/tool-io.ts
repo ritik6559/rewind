@@ -9,7 +9,7 @@ export type ToolCall = typeof ToolCall.infer;
 
 export const ToolResult = type({
   toolCallId: "string",
-  succeeded: "boolean",
+  isError: "boolean",
   output: "string", 
   "fullOutputKey?": "string", 
   "exitCode?": "number.integer",
