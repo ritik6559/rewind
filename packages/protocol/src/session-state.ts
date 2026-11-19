@@ -1,7 +1,9 @@
 import { type } from "arktype";
 import { createEmptyUsage, type Usage } from "./usage.ts";
 
-export const SessionStatus = type("'idle' | 'running' | 'waiting_for_user' | 'error'");
+export const SessionStatus = type(
+  "'idle' | 'running' | 'waiting_for_user' | 'error'",
+);
 export type SessionStatus = typeof SessionStatus.infer;
 
 export type WaitingFor = { kind: "question"; questionId: string };
@@ -11,7 +13,7 @@ export type SessionState = {
   activeRunId: string | null;
   waitingFor: WaitingFor | null;
   lastSequenceNumber: number;
-  totalUsage: Usage; 
+  totalUsage: Usage;
 };
 
 export function createInitialSessionState(): SessionState {

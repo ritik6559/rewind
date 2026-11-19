@@ -27,7 +27,11 @@ export type Model = {
 
 export type TextContent = { type: "text"; text: string };
 
-export type ThinkingContent = { type: "thinking"; thinking: string; signature?: string };
+export type ThinkingContent = {
+  type: "thinking";
+  thinking: string;
+  signature?: string;
+};
 
 export type ToolCallContent = ToolCall & { type: "toolCall" };
 

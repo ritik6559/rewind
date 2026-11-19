@@ -10,7 +10,13 @@ export const Usage = type({
 export type Usage = typeof Usage.infer;
 
 export function createEmptyUsage(): Usage {
-  return { inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0, costUsd: 0 };
+  return {
+    inputTokens: 0,
+    outputTokens: 0,
+    cacheReadTokens: 0,
+    cacheWriteTokens: 0,
+    costUsd: 0,
+  };
 }
 
 export function addUsage(a: Usage, b: Usage): Usage {
