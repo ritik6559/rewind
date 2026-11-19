@@ -11,10 +11,10 @@
   "dependencies": {
     "@rewind/engine": "workspace:*",
     "@rewind/protocol": "workspace:*",
-    "arktype": "^2.2.9"
+    "arktype": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6",
-    "typescript": "^7.0.2"
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
   }
 }

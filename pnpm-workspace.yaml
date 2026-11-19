@@ -2,5 +2,14 @@ packages:
   - "packages/*"
   - "apps/*"
   - "sandbox/sandboxd"
+
+catalog:
+  "@types/node": ^26.6.6
+  arktype: ^2.2.9
+  typescript: ^7.0.2
+
+minimumReleaseAge: 1440
+
 allowBuilds:
   esbuild: false
+  lefthook: true
