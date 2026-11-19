@@ -7,7 +7,7 @@
   "exports": "./src/index.ts",
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",
-    "generate-models": "tsx scripts/generate-models.ts"
+    "generate-models": "tsx scripts/generate-models.ts && biome format --write src/models/generated.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.9.0",
