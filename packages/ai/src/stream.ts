@@ -1,6 +1,8 @@
 import { createEmptyUsage } from "@rewind/protocol";
 import { fauxAdapter } from "./apis/faux.ts";
+import { openaiCompletionsAdapter } from "./apis/openai-completions.ts";
 import { AssistantMessageEventStream } from "./event-stream.ts";
+import { getEnvApiKey } from "./keys.ts";
 import type { Api, AssistantMessage, Context, Model } from "./types.ts";
 
 export type StreamOptions = {
@@ -18,6 +20,7 @@ export type Adapter = (
 
 const adapters: Partial<Record<Api, Adapter>> = {
   faux: fauxAdapter,
+  "openai-completions": openaiCompletionsAdapter,
 };
 
 export function stream(
@@ -33,8 +36,17 @@ export function stream(
     return events;
   }
 
+  const apiKey = options.apiKey ?? getEnvApiKey(model.provider);
+
   Promise.resolve()
-    .then(() => adapter(model, context, options, events))
+    .then(() =>
+      adapter(
+        model,
+        context,
+        apiKey ? { ...options, apiKey } : options,
+        events,
+      ),
+    )
     .then(
       () =>
         events.push(
