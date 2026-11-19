@@ -1,6 +1,6 @@
-import { createEmptyUsage, newId } from "@rewind/protocol";
+import { type AssistantMessage, createEmptyUsage } from "@rewind/protocol";
 import type { Adapter } from "../stream.ts";
-import type { AssistantMessage, Model } from "../types.ts";
+import type { Model } from "../types.ts";
 
 export type FauxReply = {
   thinking?: string;
@@ -68,7 +68,7 @@ export const fauxAdapter: Adapter = async (
     const contentIndex = content.length;
     const toolCall = {
       type: "toolCall" as const,
-      toolCallId: newId(),
+      toolCallId: crypto.randomUUID(),
       ...call,
     };
     content.push(toolCall);

@@ -1,4 +1,5 @@
 import { type } from "arktype";
+import { baseScope } from "../base.scope.ts";
 
 export const ToolCall = type({
   toolCallId: "string",
@@ -7,12 +8,16 @@ export const ToolCall = type({
 });
 export type ToolCall = typeof ToolCall.infer;
 
-export const ToolResult = type({
+export const ToolResult = baseScope.type({
   toolCallId: "string",
+  toolName: "string",
   isError: "boolean",
   output: "string",
-  "fullOutputKey?": "string",
+  "fullOutputKey?": type("string").configure({
+    description:
+      "the blob store key of the full output, set only when output was cut",
+  }),
   "exitCode?": "number.integer",
-  durationMs: "number >= 0",
+  durationMs: "durationMs",
 });
 export type ToolResult = typeof ToolResult.infer;

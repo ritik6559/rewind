@@ -1,10 +1,10 @@
-import { type } from "arktype";
+import { baseScope } from "../base.scope.ts";
 
-export const Usage = type({
-  inputTokens: "number.integer >= 0",
-  outputTokens: "number.integer >= 0",
-  cacheReadTokens: "number.integer >= 0",
-  cacheWriteTokens: "number.integer >= 0",
+export const Usage = baseScope.type({
+  inputTokens: "count",
+  outputTokens: "count",
+  cacheReadTokens: "count",
+  cacheWriteTokens: "count",
   costUsd: "number >= 0",
 });
 export type Usage = typeof Usage.infer;

@@ -1,9 +1,13 @@
-import { createEmptyUsage } from "@rewind/protocol";
+import {
+  type Api,
+  type AssistantMessage,
+  createEmptyUsage,
+} from "@rewind/protocol";
 import { fauxAdapter } from "./apis/faux.ts";
 import { openaiCompletionsAdapter } from "./apis/openai-completions.ts";
 import { AssistantMessageEventStream } from "./event-stream.ts";
 import { getEnvApiKey } from "./keys.ts";
-import type { Api, AssistantMessage, Context, Model } from "./types.ts";
+import type { Context, Model } from "./types.ts";
 
 export type StreamOptions = {
   apiKey?: string;

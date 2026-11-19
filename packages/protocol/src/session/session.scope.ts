@@ -1,18 +1,18 @@
 import { type } from "arktype";
-import { createEmptyUsage, type Usage } from "./usage.ts";
+import type { QuestionId, RunId } from "../ids.ts";
+import { createEmptyUsage, type Usage } from "../usage/usage.scope.ts";
+import { SESSION_STATUSES } from "./session.data.ts";
 
-export const SessionStatus = type(
-  "'idle' | 'running' | 'waiting_for_user' | 'error'",
-);
+export const SessionStatus = type.enumerated(...SESSION_STATUSES);
 export type SessionStatus = typeof SessionStatus.infer;
 
-export type WaitingFor = { kind: "question"; questionId: string };
+export type WaitingFor = { kind: "question"; questionId: QuestionId };
 
 export type SessionState = {
   status: SessionStatus;
-  activeRunId: string | null;
+  activeRunId: RunId | null;
   waitingFor: WaitingFor | null;
-  lastSequenceNumber: number;
+  lastSeq: number;
   totalUsage: Usage;
 };
 
@@ -21,7 +21,7 @@ export function createInitialSessionState(): SessionState {
     status: "idle",
     activeRunId: null,
     waitingFor: null,
-    lastSequenceNumber: 0,
+    lastSeq: 0,
     totalUsage: createEmptyUsage(),
   };
 }

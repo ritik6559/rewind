@@ -1,4 +1,4 @@
-import type { AssistantMessage, ToolCallContent } from "./types.ts";
+import type { AssistantMessage, ToolCallContent } from "@rewind/protocol";
 
 export type AssistantMessageEvent =
   | { type: "start" }

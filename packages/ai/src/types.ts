@@ -1,6 +1,4 @@
-import type { StopReason, ToolCall, Usage } from "@rewind/protocol";
-
-export type Api = "openai-completions" | "faux";
+import type { Api, Message } from "@rewind/protocol";
 
 export type PricePerMillionTokens = {
   input: number;
@@ -19,42 +17,6 @@ export type Model = {
   pricePerMillionTokens: PricePerMillionTokens;
   supportsReasoning: boolean;
 };
-
-export type TextContent = { type: "text"; text: string };
-
-export type ThinkingContent = {
-  type: "thinking";
-  thinking: string;
-  signature?: string;
-};
-
-export type ToolCallContent = ToolCall & { type: "toolCall" };
-
-export type UserMessage = {
-  role: "user";
-  content: string | TextContent[];
-};
-
-export type AssistantMessage = {
-  role: "assistant";
-  content: (TextContent | ThinkingContent | ToolCallContent)[];
-  api: Api;
-  provider: string;
-  modelId: string;
-  usage: Usage;
-  stopReason: StopReason;
-  errorMessage?: string;
-};
-
-export type ToolResultMessage = {
-  role: "toolResult";
-  toolCallId: string;
-  toolName: string;
-  content: TextContent[];
-  isError: boolean;
-};
-
-export type Message = UserMessage | AssistantMessage | ToolResultMessage;
 
 export type ToolSpec = {
   name: string;

@@ -1,4 +1,10 @@
-import { createEmptyUsage, type StopReason } from "@rewind/protocol";
+import {
+  type AssistantMessage,
+  createEmptyUsage,
+  type StopReason,
+  type TextContent,
+  type ToolCallContent,
+} from "@rewind/protocol";
 import OpenAI from "openai";
 import type {
   ChatCompletionCreateParamsStreaming,
@@ -6,12 +12,7 @@ import type {
 } from "openai/resources/chat/completions";
 import { calculateCost } from "../cost.ts";
 import type { Adapter } from "../stream.ts";
-import type {
-  AssistantMessage,
-  Context,
-  TextContent,
-  ToolCallContent,
-} from "../types.ts";
+import type { Context } from "../types.ts";
 
 const stopReasons: Record<string, StopReason> = {
   stop: "stop",

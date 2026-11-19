@@ -1,5 +1,5 @@
+import type { AssistantMessage } from "@rewind/protocol";
 import { type AssistantMessageEvent, isFinalEvent } from "./events.ts";
-import type { AssistantMessage } from "./types.ts";
 
 export class AssistantMessageEventStream
   implements AsyncIterable<AssistantMessageEvent>
