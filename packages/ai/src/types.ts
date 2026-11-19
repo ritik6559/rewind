@@ -1,11 +1,6 @@
 import type { StopReason, ToolCall, Usage } from "@rewind/protocol";
 
-export type Api =
-  | "openai-completions"
-  | "openai-responses"
-  | "anthropic-messages"
-  | "google-generative-ai"
-  | "faux";
+export type Api = "openai-completions" | "faux";
 
 export type PricePerMillionTokens = {
   input: number;

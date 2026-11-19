@@ -18,10 +18,6 @@ type ModelsDevModel = {
 
 const baseUrls: Record<string, string> = {
   openai: "https://api.openai.com/v1",
-  groq: "https://api.groq.com/openai/v1",
-  deepseek: "https://api.deepseek.com",
-  xai: "https://api.x.ai/v1",
-  mistral: "https://api.mistral.ai/v1",
 };
 
 const response = await fetch("https://models.dev/api.json");
