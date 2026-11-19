@@ -1,9 +1,7 @@
 import { type AssistantMessageEvent, isFinalEvent } from "./events.ts";
 import type { AssistantMessage } from "./types.ts";
 
-export class AssistantMessageEventStream
-  implements AsyncIterable<AssistantMessageEvent>
-{
+export class AssistantMessageEventStream implements AsyncIterable<AssistantMessageEvent> {
   private events: AssistantMessageEvent[] = [];
   private wakeReader: (() => void) | null = null;
   private finished = false;
