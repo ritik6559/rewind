@@ -1,4 +1,4 @@
-import type { Api, Message } from "@rewind/protocol";
+import type { Api, Message, ToolSpec } from "@rewind/protocol";
 
 export type PricePerMillionTokens = {
   input: number;
@@ -16,12 +16,6 @@ export type Model = {
   maxOutputTokens: number;
   pricePerMillionTokens: PricePerMillionTokens;
   supportsReasoning: boolean;
-};
-
-export type ToolSpec = {
-  name: string;
-  description: string;
-  inputJsonSchema: Record<string, unknown>;
 };
 
 export type Context = {

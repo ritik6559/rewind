@@ -8,6 +8,13 @@ export const ToolCall = type({
 });
 export type ToolCall = typeof ToolCall.infer;
 
+export const ToolSpec = type({
+  name: "string",
+  description: "string",
+  inputJsonSchema: "Record<string, unknown>",
+});
+export type ToolSpec = typeof ToolSpec.infer;
+
 export const ToolResult = baseScope.type({
   toolCallId: "string",
   toolName: "string",

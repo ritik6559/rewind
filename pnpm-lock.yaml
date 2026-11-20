@@ -325,9 +325,6 @@ importers:
 
   packages/tools:
     dependencies:
-      '@rewind/engine':
-        specifier: workspace:*
-        version: link:../engine
       '@rewind/protocol':
         specifier: workspace:*
         version: link:../protocol

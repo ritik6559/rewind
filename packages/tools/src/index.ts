@@ -1,2 +1,1 @@
-// allTools and toolsets
-export {};
+export * from "./define-tool.ts";
