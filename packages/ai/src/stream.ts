@@ -3,10 +3,10 @@ import {
   type AssistantMessage,
   createEmptyUsage,
 } from "@rewind/protocol";
-import { fauxAdapter } from "./apis/faux.ts";
-import { openaiCompletionsAdapter } from "./apis/openai-completions.ts";
 import { AssistantMessageEventStream } from "./event-stream.ts";
 import { getEnvApiKey } from "./keys.ts";
+import { fauxAdapter } from "./providers/faux.ts";
+import { openaiCompletionsAdapter } from "./providers/openai-completions.ts";
 import type { Context, Model } from "./types.ts";
 
 export type StreamOptions = {
