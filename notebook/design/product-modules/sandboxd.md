@@ -9,7 +9,7 @@ The hands. A small Node HTTP server that runs inside the Computer and carries ou
 - **API:** `POST /v1/tools/:name` with the tool input as JSON. Response is chunked: output chunks while the tool runs, then one final line with the `ToolResult` fields (`isError`, `output`, `exitCode`, `durationMs`).
 - **Path guard** (`paths.ts`): every path resolves inside `/workspace` or the call fails.
 - **Shell** (`shell/`): `shell_exec` spawns `bash -lc <command>` in `/workspace`, streams stdout and stderr, kills the process group on timeout or when the request is cancelled.
-- **Editor** (`editor/files.ts`): `open_file`, `create_file`, `str_replace` as in the tools design.
+- **Editor** (`editor/files.ts`): `list_files`, `open_file`, `create_file`, `str_replace` as in the tools design.
 - **Health:** `GET /health` so the server can wait for the container before the first Run.
 
 ## Fallback

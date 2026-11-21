@@ -19,7 +19,7 @@ Done when the agent fixes the failing test in `demo-repo/` with no human help, s
 | Context | Always rebuilt from the Session's Events. Nothing lives only in memory. |
 | Events | `node:sqlite` store in `packages/runtime-node`. |
 | Sandbox | `sandboxd` in one local Docker container, reached over HTTP, demo repo mounted at `/workspace`. Fallback after 2 hours of trouble: `sandboxd` as a host process using Git Bash. |
-| Tools | `shell_exec`, `open_file`, `str_replace`, `create_file`, `finish`, `ask_user`. |
+| Tools | `shell_exec`, `list_files`, `open_file`, `str_replace`, `create_file`, `finish`, `ask_user`. |
 | `shell_exec` | One-shot `bash -lc`, repo root, 120 s timeout, output trimmed to about 8 KB head and tail. Streams stdout/stderr while running. |
 | Streaming tools | `SandboxClient.callTool` gains an optional `onOutput(chunk)`; `sandboxd` sends a chunked HTTP response. Chunks are never stored; `tool.call_finished` holds the trimmed output. |
 | Limits | Per Run: at most 50 Steps and $1. Hitting either fails the Run with a clear reason. |
@@ -40,7 +40,7 @@ Cloudflare, Durable Objects, Postgres, auth, GitHub and PRs, other model provide
 
 | When | Work | Checkpoint |
 |---|---|---|
-| 2026-11-21 night | Loop, context builder, SQLite Event store, the six tools, `sandboxd` + Dockerfile, `demo-repo/` | A script makes the agent fix the failing test |
+| 2026-11-21 night | Loop, context builder, SQLite Event store, the seven tools, `sandboxd` + Dockerfile, `demo-repo/` | A script makes the agent fix the failing test |
 | 2026-11-22 morning | `apps/server`: Hono, WebSocket, limits | A WebSocket client can run a Session |
 | 2026-11-22 afternoon | `apps/web`, styled | The demo works in the browser |
 | 2026-11-22 evening | Rehearse, record a backup video, freeze features | — |

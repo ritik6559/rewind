@@ -13,7 +13,8 @@ Tool definitions: name, description, ArkType input schema, and where the tool ru
 | Tool | Runs in | Input | Behaviour |
 |---|---|---|---|
 | `shell_exec` | sandbox | `command`, `timeoutSec = 120` | One-shot `bash -lc` in `/workspace`. Streams stdout and stderr. Returns exit code and trimmed output. On timeout, kills it and returns partial output. |
-| `open_file` | sandbox | `path`, `startLine?`, `endLine?` | Numbered lines, at most 400 per call. A directory returns a listing. |
+| `list_files` | sandbox | `path?` | Files and folders two levels deep, skipping `node_modules` and `.git`. |
+| `open_file` | sandbox | `path`, `startLine?`, `endLine?` | Numbered lines of a file, at most 400 per call. Files only. |
 | `create_file` | sandbox | `path`, `content`, `overwrite = false` | Fails if the file exists, unless `overwrite`. |
 | `str_replace` | sandbox | `path`, `old_str`, `new_str` | Needs exactly one match. Returns the edited region with 4 lines of context. |
 | `ask_user` | engine | `question`, `suggestedAnswers?` | Pauses the Run until the user answers. |
@@ -21,8 +22,8 @@ Tool definitions: name, description, ArkType input schema, and where the tool ru
 
 All paths are relative to the Workspace root; `sandboxd` rejects paths that leave it.
 
-A `toolsets.ts` export lists these six as the MVP toolset.
+A `toolsets.ts` export lists these seven as the MVP toolset.
 
 ## Later
 
-`shell_start|read|input|kill` (tmux, background processes), `undo_edit`, `find_and_edit`, `search`, `list_files`, browser tools, GitHub tools, `message_user`, approval rules and read-only flags per tool.
+`shell_start|read|input|kill` (tmux, background processes), `undo_edit`, `find_and_edit`, `search`, browser tools, GitHub tools, `message_user`, approval rules and read-only flags per tool.
