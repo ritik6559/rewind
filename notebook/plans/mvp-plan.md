@@ -10,22 +10,22 @@ Done when the agent fixes the failing test in `demo-repo/` with no human help, s
 
 ## In scope
 
-| Area | Decision |
-|---|---|
-| Entry point | `apps/server` (Hono on Node) + `apps/web` (Vite + React). `apps/cli` stays a placeholder. |
-| Live updates | WebSocket via `@hono/node-ws`. Server sends `{t:"event", e}` for stored Events and `{t:"delta", ...}` for streamed text and tool output. Client sends messages, answers and Stop; reconnect calls `subscribe(afterSeq)`. |
-| Model | OpenAI only, `gpt-5.4-mini`, fixed in server config. |
-| Loop | Plain `while` loop in `packages/engine/src/run/run-loop.ts`. Graph engine files stay as placeholders. |
-| Context | Always rebuilt from the Session's Events. Nothing lives only in memory. |
-| Events | `node:sqlite` store in `packages/runtime-node`. |
-| Sandbox | `sandboxd` in one local Docker container, reached over HTTP, demo repo mounted at `/workspace`. Fallback after 2 hours of trouble: `sandboxd` as a host process using Git Bash. |
-| Tools | `shell_exec`, `list_files`, `open_file`, `str_replace`, `create_file`, `finish`, `ask_user`. |
-| `shell_exec` | One-shot `bash -lc`, repo root, 120 s timeout, output trimmed to about 8 KB head and tail. Streams stdout/stderr while running. |
-| Streaming tools | `SandboxClient.callTool` gains an optional `onOutput(chunk)`; `sandboxd` sends a chunked HTTP response. Chunks are never stored; `tool.call_finished` holds the trimmed output. |
-| Limits | Per Run: at most 50 Steps and $1. Hitting either fails the Run with a clear reason. |
-| Repo | One fixed repo per server start (`--repo ../demo-repo`), shared by all Sessions. |
-| Messages during a Run | Queued under the composer with a **Send now** button: Send now delivers it at the next Step boundary, otherwise it is sent as a new Run when the current one ends. |
-| UI | Chat timeline (messages, streamed agent text, collapsible tool cards, question reply box); header with status pill, Run cost and Stop; sidebar of past Sessions from SQLite. |
+| Area                  | Decision                                                                                                                                                                                                                 |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Entry point           | `apps/server` (Hono on Node) + `apps/web` (Vite + React). `apps/cli` stays a placeholder.                                                                                                                                |
+| Live updates          | WebSocket via `@hono/node-ws`. Server sends `{t:"event", e}` for stored Events and `{t:"delta", ...}` for streamed text and tool output. Client sends messages, answers and Stop; reconnect calls `subscribe(afterSeq)`. |
+| Model                 | OpenAI only, `gpt-5.4-mini`, fixed in server config.                                                                                                                                                                     |
+| Loop                  | Plain `while` loop in `packages/engine/src/run/run-loop.ts`. Graph engine files stay as placeholders.                                                                                                                    |
+| Context               | Always rebuilt from the Session's Events. Nothing lives only in memory.                                                                                                                                                  |
+| Events                | `node:sqlite` store in `packages/runtime-node`.                                                                                                                                                                          |
+| Sandbox               | `sandboxd` in one local Docker container, reached over HTTP, demo repo mounted at `/workspace`. Fallback after 2 hours of trouble: `sandboxd` as a host process using Git Bash.                                          |
+| Tools                 | `shell_exec`, `list_files`, `open_file`, `str_replace`, `create_file`, `finish`, `ask_user`.                                                                                                                             |
+| `shell_exec`          | One-shot `bash -lc`, repo root, 120 s timeout, output trimmed to about 8 KB head and tail. Streams stdout/stderr while running.                                                                                          |
+| Streaming tools       | `SandboxClient.callTool` gains an optional `onOutput(chunk)`; `sandboxd` sends a chunked HTTP response. Chunks are never stored; `tool.call_finished` holds the trimmed output.                                          |
+| Limits                | Per Run: at most 50 Steps and $1. Hitting either fails the Run with a clear reason.                                                                                                                                      |
+| Repo                  | One fixed repo per server start (`--repo ../demo-repo`), shared by all Sessions.                                                                                                                                         |
+| Messages during a Run | Queued under the composer with a **Send now** button: Send now delivers it at the next Step boundary, otherwise it is sent as a new Run when the current one ends.                                                       |
+| UI                    | Chat timeline (messages, streamed agent text, collapsible tool cards, question reply box); header with status pill, Run cost and Stop; sidebar of past Sessions from SQLite.                                             |
 
 ## Rules kept from day one
 
@@ -39,12 +39,12 @@ Cloudflare, Durable Objects, Postgres, auth, GitHub and PRs, other model provide
 
 ## Schedule
 
-| When | Work | Checkpoint |
-|---|---|---|
-| 2026-11-21 night | Loop, context builder, SQLite Event store, the seven tools, `sandboxd` + Dockerfile, `demo-repo/` | A script makes the agent fix the failing test |
-| 2026-11-22 morning | `apps/server`: Hono, WebSocket, limits | A WebSocket client can run a Session |
-| 2026-11-22 afternoon | `apps/web`, styled | The demo works in the browser |
-| 2026-11-22 evening | Rehearse, record a backup video, freeze features | — |
+| When                 | Work                                                                                              | Checkpoint                                    |
+| -------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| 2026-11-21 night     | Loop, context builder, SQLite Event store, the seven tools, `sandboxd` + Dockerfile, `demo-repo/` | A script makes the agent fix the failing test |
+| 2026-11-22 morning   | `apps/server`: Hono, WebSocket, limits                                                            | A WebSocket client can run a Session          |
+| 2026-11-22 afternoon | `apps/web`, styled                                                                                | The demo works in the browser                 |
+| 2026-11-22 evening   | Rehearse, record a backup video, freeze features                                                  | —                                             |
 
 If time runs short, cut UI polish first. Never cut the checkpoint.
 

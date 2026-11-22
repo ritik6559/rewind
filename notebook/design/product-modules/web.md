@@ -5,6 +5,7 @@ The page the user and the evaluators see. Vite + React, served by `apps/server`.
 ## MVP design
 
 **Layout:**
+
 - **Sidebar:** past Sessions (from `GET /api/sessions`) and a "New session" button.
 - **Header:** status pill (`idle`, `running`, `waiting_for_user`, `error`), the current Run's cost, and a Stop button while running.
 - **Timeline:** one card per Event, in `seq` order:

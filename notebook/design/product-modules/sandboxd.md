@@ -4,9 +4,9 @@ The hands. A small Node HTTP server that runs inside the Computer and carries ou
 
 ## MVP design
 
-- **Image** (`sandbox/Dockerfile`): Node, bash, git, ripgrep, and `sandboxd`. Linux, amd64.
-- **Run:** one local Docker container, the demo repo mounted at `/workspace`, port 8080 published to localhost only.
-- **API:** `POST /v1/tools/:name` with the tool input as JSON. Response is chunked: output chunks while the tool runs, then one final line with the `ToolResult` fields (`isError`, `output`, `exitCode`, `durationMs`).
+- **Image** (`sandbox/Dockerfile`): Node 24, bash, git, ripgrep, and `sandboxd`. Build from the repo root: `docker build -f sandbox/Dockerfile -t rewind-sandbox .`.
+- **Run:** `docker run -d -p 127.0.0.1:8080:8080 -v <repo>:/workspace rewind-sandbox`. Env: `WORKSPACE_ROOT` (default `/workspace`), `PORT` (default 8080). There is no auth, so the port is published to localhost only.
+- **API:** `POST /v1/tool-calls` with a `ToolCall` as JSON. The response is NDJSON, one `SandboxMessage` per line (defined in `protocol`): `{type:"output", chunk}` while the tool runs, then one `{type:"result", result}` holding the `ToolResult`. Closing the request cancels the tool.
 - **Path guard** (`paths.ts`): every path resolves inside `/workspace` or the call fails.
 - **Shell** (`shell/`): `shell_exec` spawns `bash -lc <command>` in `/workspace`, streams stdout and stderr, kills the process group on timeout or when the request is cancelled.
 - **Editor** (`editor/files.ts`): `list_files`, `open_file`, `create_file`, `str_replace` as in the tools design.

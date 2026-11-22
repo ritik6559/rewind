@@ -11,12 +11,14 @@ The brain. It runs a Session's Runs: builds the model context, calls the model, 
 ## MVP design
 
 **Agent class** (`run/agent.ts`, one per Session, called by `apps/server`):
+
 - `sendMessage(text)`: starts a Run if idle (appending `user.message_sent`). If a Run is `running`, the text is held and appended as `user.message_sent` at the next Step boundary, before the context is built, so it never lands between a tool call and its result. It does not cancel the current Step. Queued-until-the-Run-ends messages are the web app's job, not the engine's.
 - `answerQuestion(questionId, text)`: appends `user.question_answered` and continues the Run.
 - `stopRun()`: aborts the Run's signal, appends `run.cancelled`, status goes to `idle`.
 - An `onDelta(delta)` hook for live text and tool output, which the server forwards over the WebSocket.
 
 **Loop** (`Agent.runUntilEndedOrWaiting` in `run/agent.ts`), a plain `while`:
+
 1. Build the context from the Session's Events.
 2. Append `model.request_sent`, stream the model, forward text deltas, append `model.response_received`.
 3. No tool calls → append `agent.message_sent` and `run.completed`, status `idle`.
