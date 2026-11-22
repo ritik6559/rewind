@@ -24,6 +24,7 @@ Done when the agent fixes the failing test in `demo-repo/` with no human help, s
 | Streaming tools | `SandboxClient.callTool` gains an optional `onOutput(chunk)`; `sandboxd` sends a chunked HTTP response. Chunks are never stored; `tool.call_finished` holds the trimmed output. |
 | Limits | Per Run: at most 50 Steps and $1. Hitting either fails the Run with a clear reason. |
 | Repo | One fixed repo per server start (`--repo ../demo-repo`), shared by all Sessions. |
+| Messages during a Run | Queued under the composer with a **Send now** button: Send now delivers it at the next Step boundary, otherwise it is sent as a new Run when the current one ends. |
 | UI | Chat timeline (messages, streamed agent text, collapsible tool cards, question reply box); header with status pill, Run cost and Stop; sidebar of past Sessions from SQLite. |
 
 ## Rules kept from day one

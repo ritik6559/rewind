@@ -261,6 +261,9 @@ importers:
       '@rewind/protocol':
         specifier: workspace:*
         version: link:../protocol
+      '@rewind/tools':
+        specifier: workspace:*
+        version: link:../tools
       arktype:
         specifier: 'catalog:'
         version: 2.2.9
@@ -300,6 +303,9 @@ importers:
         specifier: workspace:*
         version: link:../protocol
     devDependencies:
+      '@rewind/tools':
+        specifier: workspace:*
+        version: link:../tools
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6

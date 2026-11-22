@@ -11,6 +11,7 @@
   "dependencies": {
     "@rewind/ai": "workspace:*",
     "@rewind/protocol": "workspace:*",
+    "@rewind/tools": "workspace:*",
     "arktype": "catalog:"
   },
   "devDependencies": {

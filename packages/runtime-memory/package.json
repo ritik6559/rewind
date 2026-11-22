@@ -14,6 +14,7 @@
     "@rewind/protocol": "workspace:*"
   },
   "devDependencies": {
+    "@rewind/tools": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:"
   }

@@ -133,6 +133,31 @@ describe("buildMessages", () => {
     ]);
   });
 
+  it("closes the ask_user call when the user stops the run instead of answering", () => {
+    const messages = buildMessages(
+      eventsOf(
+        anEvent("tool.call_started", {
+          toolCallId: "call_7",
+          toolName: "ask_user",
+          input: { question: "Which file?" },
+        }),
+        anEvent("run.cancelled", { cancelledBy: "user" }),
+      ),
+    );
+
+    expect(messages).toEqual([
+      {
+        role: "toolResult",
+        toolCallId: "call_7",
+        toolName: "ask_user",
+        isError: true,
+        content: [
+          { type: "text", text: "The user stopped the run before answering." },
+        ],
+      },
+    ]);
+  });
+
   it("treats an answer with no open ask_user call as a user message", () => {
     const messages = buildMessages(
       eventsOf(

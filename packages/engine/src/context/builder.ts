@@ -52,6 +52,19 @@ export function buildMessages(events: StoredEvent[]): Message[] {
         askUserCallId = null;
         break;
       }
+      case "run.cancelled":
+        if (askUserCallId) {
+          messages.push(
+            toolResultMessage(
+              askUserCallId,
+              "ask_user",
+              "The user stopped the run before answering.",
+              true,
+            ),
+          );
+          askUserCallId = null;
+        }
+        break;
       default:
         break;
     }

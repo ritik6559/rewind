@@ -1,4 +1,5 @@
 export * from "./base.scope.ts";
+export type * from "./delta.ts";
 export * from "./events/event-payloads.scope.ts";
 export * from "./events/events.data.ts";
 export * from "./events/events.scope.ts";

@@ -26,7 +26,11 @@ export type EventStore = {
 };
 
 export type SandboxClient = {
-  callTool(toolCall: ToolCall, signal: AbortSignal): Promise<ToolResult>;
+  callTool(
+    toolCall: ToolCall,
+    signal: AbortSignal,
+    onOutput?: (chunk: string) => void,
+  ): Promise<ToolResult>;
 };
 
 export type Runtime = {
