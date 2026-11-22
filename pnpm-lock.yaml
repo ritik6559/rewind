@@ -356,6 +356,9 @@ importers:
       '@rewind/protocol':
         specifier: workspace:*
         version: link:../../packages/protocol
+      '@rewind/tools':
+        specifier: workspace:*
+        version: link:../../packages/tools
       arktype:
         specifier: 'catalog:'
         version: 2.2.9

@@ -28,3 +28,9 @@ export const ToolResult = baseScope.type({
   durationMs: "durationMs",
 });
 export type ToolResult = typeof ToolResult.infer;
+
+export const SandboxMessage = type({ type: "'output'", chunk: "string" }).or({
+  type: "'result'",
+  result: ToolResult,
+});
+export type SandboxMessage = typeof SandboxMessage.infer;
