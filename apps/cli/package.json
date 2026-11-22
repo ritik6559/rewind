@@ -6,11 +6,13 @@
   "type": "module",
   "exports": "./src/index.ts",
   "scripts": {
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "checkpoint": "node --env-file=../../.env src/checkpoint.ts"
   },
   "dependencies": {
     "@rewind/ai": "workspace:*",
     "@rewind/engine": "workspace:*",
+    "@rewind/runtime-memory": "workspace:*",
     "@rewind/runtime-node": "workspace:*",
     "@rewind/tools": "workspace:*"
   },

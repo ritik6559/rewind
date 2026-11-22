@@ -223,6 +223,9 @@ importers:
       '@rewind/engine':
         specifier: workspace:*
         version: link:../../packages/engine
+      '@rewind/runtime-memory':
+        specifier: workspace:*
+        version: link:../../packages/runtime-memory
       '@rewind/runtime-node':
         specifier: workspace:*
         version: link:../../packages/runtime-node
